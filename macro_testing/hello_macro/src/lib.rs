@@ -1,3 +1,3 @@
 pub trait HelloMacro {
-    fn hello_macro();
+    fn hello_macro(&self);
 }
