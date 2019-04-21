@@ -26,6 +26,7 @@ use web_dev::errors::WebdevErrorKind;
 use web_dev::search::NullableSearch;
 use web_dev::search::Search;
 
+use web_dev::table_traits;
 /* Alright, here's how macros work.
  *   When you call #derive(macro_name) it calls the corresponding
  *   public function marked with proc_macro_derive.

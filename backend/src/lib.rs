@@ -5,6 +5,7 @@ extern crate diesel;
 extern crate diesel_migrations;
 
 
+pub mod table_traits;
 pub mod errors;
 pub mod users;
 pub mod departments;
