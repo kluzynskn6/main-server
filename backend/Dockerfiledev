@@ -10,11 +10,10 @@ COPY . /usr/src/web_dev
 #Create volume for release
 VOLUME ./target:/usr/src/web_dev/target
 
-# Build the app
-RUN cargo build --release
-
 # Make port 8080 available
 EXPOSE 8000:8000
 
 # Run the app
-CMD ["target/release/web_dev"]
+RUN cargo build
+
+CMD ["bash"]
