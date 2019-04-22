@@ -1,11 +1,11 @@
 [package]
-name = "wedev_derive"
+name = "webdev_derive"
 version = "0.1.0"
 authors = ["root"]
 edition = "2018"
 
 [lib]
-crate-type = ["proc-macro"]
+proc-macro = true
 
 [dependencies]
 rouille = "3.0.0"
@@ -18,6 +18,6 @@ log = "0.4"
 simplelog = "0.5"
 url="1.7.2"
 csv = "1.0.5"
-web_dev = { path = "../"}
 syn = "0.15.32"
 quote = "0.6.12"
+backend_support = { path = "../backend_support"}

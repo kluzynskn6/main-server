@@ -20,13 +20,10 @@ use log::info;
 use log::warn;
 use log::error;
 
-use web_dev::errors::WebdevError;
-use web_dev::errors::WebdevErrorKind;
+use backend_support::search::NullableSearch;
+use backend_support::search::Search;
 
-use web_dev::search::NullableSearch;
-use web_dev::search::Search;
-
-use web_dev::table_traits;
+use backend_support::table_traits;
 /* Alright, here's how macros work.
  *   When you call #derive(macro_name) it calls the corresponding
  *   public function marked with proc_macro_derive.
@@ -97,11 +94,8 @@ fn impl_create_table_functions(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
         impl CreateTableFunctions for #name {
-            fn get(id:u64,table:Table,con:&MysqlConnection) {
+            fn create(&self,table:Table,con:&MysqlConnection) {
                 println!("Hello, Macro! My name is {}", stringify!(#name));
-            }
-            fn delete (id:u64,table:Table,con:&MysqlConnection) {
-            
             }
         }
     };
@@ -112,11 +106,8 @@ fn impl_update_table_functions(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
         impl UpdateTableFunctions for #name {
-            fn get(id:u64,table:Table,con:&MysqlConnection) {
+            fn update(&self,table:Table,con:&MysqlConnection) {
                 println!("Hello, Macro! My name is {}", stringify!(#name));
-            }
-            fn delete (id:u64,table:Table,con:&MysqlConnection) {
-            
             }
         }
     };
@@ -127,11 +118,8 @@ fn impl_search_table_functions(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
         impl SearchTableFunctions for #name {
-            fn get(id:u64,table:Table,con:&MysqlConnection) {
+            fn search(&self,table:Table,con:&MysqlConnection) {
                 println!("Hello, Macro! My name is {}", stringify!(#name));
-            }
-            fn delete (id:u64,table:Table,con:&MysqlConnection) {
-            
             }
         }
     };

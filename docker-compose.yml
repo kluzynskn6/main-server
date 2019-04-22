@@ -16,6 +16,8 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: mysql://root:apple1@db/web_dev
+      #User is needed for dev build
+      USER: kluzynick
     #cargo run needed for dev build
     command: cargo run --bin web_dev   
 
