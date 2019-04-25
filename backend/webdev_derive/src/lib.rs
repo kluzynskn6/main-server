@@ -79,10 +79,10 @@ fn impl_generic_table_functions(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
         impl GenericTableFunctions for #name {
-            fn get(id:u64,table:Table,con:&MysqlConnection) {
+            fn get(&self, id:u64:&MysqlConnection) {
                 println!("Hello, Macro! My name is {}", stringify!(#name));
             }
-            fn delete (id:u64,table:Table,con:&MysqlConnection) {
+            fn delete (&self, id:u64,con:&MysqlConnection) {
             
             }
         }
@@ -94,7 +94,7 @@ fn impl_create_table_functions(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
         impl CreateTableFunctions for #name {
-            fn create(&self,table:Table,con:&MysqlConnection) {
+            fn <T>create(&self,con:&MysqlConnection) {
                 println!("Hello, Macro! My name is {}", stringify!(#name));
             }
         }
@@ -106,7 +106,7 @@ fn impl_update_table_functions(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
         impl UpdateTableFunctions for #name {
-            fn update(&self,table:Table,con:&MysqlConnection) {
+            fn update<T>(&self,con:&MysqlConnection) {
                 println!("Hello, Macro! My name is {}", stringify!(#name));
             }
         }
@@ -118,7 +118,7 @@ fn impl_search_table_functions(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
         impl SearchTableFunctions for #name {
-            fn search(&self,table:Table,con:&MysqlConnection) {
+            fn search<T>(&self,table:Table,con:&MysqlConnection) {
                 println!("Hello, Macro! My name is {}", stringify!(#name));
             }
         }
